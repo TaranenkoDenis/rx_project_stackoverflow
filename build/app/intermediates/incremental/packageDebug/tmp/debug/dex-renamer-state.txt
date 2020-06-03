@@ -1,0 +1,4 @@
+#Wed Jun 03 15:46:18 EEST 2020
+base.0=/Users/denistaranenko/My/testRx/test_rx/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
