@@ -1,0 +1,1 @@
+[{"type":"Dio","typeImpl":"Dio","isAsync":false,"preResolve":false,"injectableType":2,"imports":["package:test_rx/di/modules.dart","package:dio/dio.dart"],"dependsOn":[],"dependencies":[],"initializerName":"dio","constructorName":"","isAbstract":false,"moduleName":"DioModul"}]

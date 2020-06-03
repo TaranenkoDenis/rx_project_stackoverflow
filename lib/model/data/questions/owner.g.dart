@@ -17,25 +17,43 @@ class _$OwnerSerializer implements StructuredSerializer<Owner> {
   @override
   Iterable<Object> serialize(Serializers serializers, Owner object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'reputation',
-      serializers.serialize(object.reputation,
-          specifiedType: const FullType(int)),
-      'user_id',
-      serializers.serialize(object.userId, specifiedType: const FullType(int)),
-      'user_type',
-      serializers.serialize(object.userType,
-          specifiedType: const FullType(String)),
-      'profile_image',
-      serializers.serialize(object.profileImage,
-          specifiedType: const FullType(String)),
-      'display_name',
-      serializers.serialize(object.displayName,
-          specifiedType: const FullType(String)),
-      'link',
-      serializers.serialize(object.link, specifiedType: const FullType(String)),
-    ];
-
+    final result = <Object>[];
+    if (object.reputation != null) {
+      result
+        ..add('reputation')
+        ..add(serializers.serialize(object.reputation,
+            specifiedType: const FullType(int)));
+    }
+    if (object.userId != null) {
+      result
+        ..add('user_id')
+        ..add(serializers.serialize(object.userId,
+            specifiedType: const FullType(int)));
+    }
+    if (object.userType != null) {
+      result
+        ..add('user_type')
+        ..add(serializers.serialize(object.userType,
+            specifiedType: const FullType(String)));
+    }
+    if (object.profileImage != null) {
+      result
+        ..add('profile_image')
+        ..add(serializers.serialize(object.profileImage,
+            specifiedType: const FullType(String)));
+    }
+    if (object.displayName != null) {
+      result
+        ..add('display_name')
+        ..add(serializers.serialize(object.displayName,
+            specifiedType: const FullType(String)));
+    }
+    if (object.link != null) {
+      result
+        ..add('link')
+        ..add(serializers.serialize(object.link,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -105,26 +123,7 @@ class _$Owner extends Owner {
       this.profileImage,
       this.displayName,
       this.link})
-      : super._() {
-    if (reputation == null) {
-      throw new BuiltValueNullFieldError('Owner', 'reputation');
-    }
-    if (userId == null) {
-      throw new BuiltValueNullFieldError('Owner', 'userId');
-    }
-    if (userType == null) {
-      throw new BuiltValueNullFieldError('Owner', 'userType');
-    }
-    if (profileImage == null) {
-      throw new BuiltValueNullFieldError('Owner', 'profileImage');
-    }
-    if (displayName == null) {
-      throw new BuiltValueNullFieldError('Owner', 'displayName');
-    }
-    if (link == null) {
-      throw new BuiltValueNullFieldError('Owner', 'link');
-    }
-  }
+      : super._();
 
   @override
   Owner rebuild(void Function(OwnerBuilder) updates) =>

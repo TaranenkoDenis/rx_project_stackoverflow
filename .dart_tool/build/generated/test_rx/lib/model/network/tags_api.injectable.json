@@ -1,0 +1,1 @@
+[{"type":"TagsApi","typeImpl":"TagsApiImpl","isAsync":false,"preResolve":false,"injectableType":1,"imports":["package:test_rx/model/network/tags_api.dart","package:dio/dio.dart"],"dependsOn":null,"dependencies":[{"type":"Dio","isFactoryParam":false,"isPositional":true,"paramName":"_dio"}],"constructorName":"","isAbstract":false}]
