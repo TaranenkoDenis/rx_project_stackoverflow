@@ -1,4 +1,4 @@
-#Wed Jun 03 20:34:32 EEST 2020
+#Thu Jun 04 14:22:01 EEST 2020
 base.0=/Users/denistaranenko/My/testRx/rx_project_stackoverflow/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

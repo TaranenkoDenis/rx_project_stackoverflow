@@ -13,7 +13,7 @@ class TagsApiImpl implements TagsApi {
   @override
   Future<BuiltList<Tag>> loadTags(
     int page, {
-    int pageSize = 20,
+    int pageSize = 30,
     String order = 'desc',
     String sort = 'popular',
     String site = 'stackoverflow',
@@ -32,7 +32,7 @@ class TagsApiImpl implements TagsApi {
 abstract class TagsApi {
   Future<BuiltList<Tag>> loadTags(
     int page, {
-    int pageSize = 20,
+    int pageSize = 30,
     String order = 'desc',
     String sort = 'popular',
     String site = 'stackoverflow',

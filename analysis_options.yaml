@@ -1,5 +1,7 @@
 analyzer:
-  exclude: [build/**]
+  exclude: 
+    - build/**
+    - lib/**.iconfig.dart
   errors:
     prefer_conditional_assignment: error
     always_declare_return_types: error

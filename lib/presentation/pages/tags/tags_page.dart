@@ -19,9 +19,26 @@ class TagsPage extends BasePage<TagsViewModel> {
       ),
       body: RxLoader(
         commandResults: viewModel.loadTags.results,
-        dataBuilder: (_, BuiltList<Tag> tags) => _TagsList(
-          tags,
-          onTap: viewModel.tapOnTag,
+        dataBuilder: (_, BuiltList<Tag> tags) => Stack(
+          children: <Widget>[
+            _TagsList(
+              tags,
+              onTap: viewModel.tapOnTag,
+            ),
+            Positioned(
+              bottom: 32,
+              right: 16,
+              child: IntrinsicHeight(
+                child: SizedBox(
+                  width: 150,
+                  child: _ReactiveRandomTag(
+                    onTap: viewModel.tapOnTag,
+                    randomTagStream: viewModel.randomTag,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         placeHolderBuilder: (context) => const Center(
           child: CircularProgressIndicator(),
@@ -30,6 +47,59 @@ class TagsPage extends BasePage<TagsViewModel> {
       ),
     );
   }
+}
+
+class _ReactiveRandomTag extends StatelessWidget {
+  final Function(Tag) onTap;
+  final Stream<Tag> randomTagStream;
+  const _ReactiveRandomTag({
+    @required this.onTap,
+    @required this.randomTagStream,
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => ReactiveBuilder<Tag>(
+        builder: (BuildContext context, data) => _RandomTag(
+          tagName: data.name,
+          onTap: () => onTap(data),
+        ),
+        errorBuilder: (context, error) => const SizedBox.shrink(),
+        placeHolderBuilder: (context) => const SizedBox.shrink(),
+        stream: randomTagStream,
+      );
+}
+
+class _RandomTag extends StatelessWidget {
+  final String tagName;
+  final VoidCallback onTap;
+  const _RandomTag({Key key, this.tagName, this.onTap}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: onTap ?? () {},
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Theme.of(context).accentColor,
+            boxShadow: const [BoxShadow(offset: Offset(0, 4), blurRadius: 16)],
+          ),
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 500),
+            child: Text(
+              tagName != null ? 'Try $tagName' : 'No tag',
+              key: ValueKey(tagName),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+      );
 }
 
 class _TagsList extends StatelessWidget {
